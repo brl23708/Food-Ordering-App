@@ -1,0 +1,19 @@
+/* Navbar hover effects */
+.navbar-nav .nav-link {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffc107 !important; /* Yellow hover */
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.dropdown-item {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #ffc107;
+  color: #212529;
+}

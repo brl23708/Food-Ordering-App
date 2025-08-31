@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "burger",
+        "price": 8.99,
+        "img": "images/burger.jpg"
+    },
+    {
+        "id": 2,
+        "name": "pizza",
+        "price": 14.50,
+        "img": "img/pizza.jpg"
+    },
+    {
+        "id": 3,
+        "name": "fries",
+        "price": 6.75,
+        "img": "img/fries.jpg"
+    },
+    {
+        "id": 4,
+        "name": "softdrinks",
+        "price": 2.75,
+        "img": "img/softdrinks.jpg"
+    },
+    {
+        "id": 5,
+        "name": "philly cheesesteak",
+        "price": 15.50,
+        "img": "img/cheesesteak.jpg"
+    },
+    {
+        "id": 6,
+        "name": "banana pudding",
+        "price": 8.99,
+        "img": "img/bananapudding.jpg"
+    }
+]
