@@ -16,20 +16,19 @@ function updateCart() {
     cartItems.appendChild(li);
   });
 
-  const tax = subtotal * 0.10; // 10% tax
+  const tax = subtotal * 0.10;
   const delivery = subtotal > 0 ? 3.00 : 0.00;
   const total = subtotal + tax + delivery;
 
+  // Update cart and mobile footer
   document.getElementById("subtotal").textContent = subtotal.toFixed(2);
   document.getElementById("tax").textContent = tax.toFixed(2);
   document.getElementById("delivery").textContent = delivery.toFixed(2);
   document.getElementById("total").textContent = total.toFixed(2);
-  document.getElementById("checkout-total").textContent = total.toFixed(2);
   document.getElementById("cart-count").textContent = cart.length;
-
-  // Update mobile footer
   document.getElementById("mobile-cart-count").textContent = cart.length;
   document.getElementById("mobile-subtotal").textContent = subtotal.toFixed(2);
+  document.getElementById("checkout-total").textContent = total.toFixed(2);
 }
 
 function removeItem(index) {
@@ -37,12 +36,65 @@ function removeItem(index) {
   updateCart();
 }
 
-// Add event listeners for all add-to-cart buttons
-document.querySelectorAll(".add-to-cart").forEach(button => {
-  button.addEventListener("click", () => {
-    const name = button.dataset.name;
-    const price = parseFloat(button.dataset.price);
-    cart.push({ name, price });
+document.addEventListener("DOMContentLoaded", () => {
+  // Add-to-cart buttons
+  document.querySelectorAll(".add-to-cart").forEach(button => {
+    button.addEventListener("click", () => {
+      const name = button.dataset.name;
+      const price = parseFloat(button.dataset.price);
+      cart.push({ name, price });
+      updateCart();
+    });
+  });
+
+  // Pay Now button
+  document.getElementById("pay-now").addEventListener("click", () => {
+    if(cart.length === 0){
+      alert("Your cart is empty!");
+      return;
+    }
+    alert("Payment successful! Thank you for your order.");
+    cart = [];
     updateCart();
+    // Close modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('checkoutModal'));
+    modal.hide();
   });
 });
+// Simple authentication simulation
+let isLoggedIn = false;
+let username = "";
+
+// Update auth button text
+function updateAuthButton() {
+  const btn = document.getElementById("auth-btn");
+  if (isLoggedIn) {
+    btn.textContent = `Logout (${username})`;
+    btn.classList.remove("btn-outline-light");
+    btn.classList.add("btn-light");
+  } else {
+    btn.textContent = "Login";
+    btn.classList.remove("btn-light");
+    btn.classList.add("btn-outline-light");
+  }
+}
+
+// Handle login/logout button click
+document.getElementById("auth-btn").addEventListener("click", () => {
+  if (!isLoggedIn) {
+    username = prompt("Enter your username:");
+    if (username) {
+      isLoggedIn = true;
+      alert(`Welcome, ${username}!`);
+    }
+  } else {
+    if (confirm("Are you sure you want to logout?")) {
+      isLoggedIn = false;
+      username = "";
+    }
+  }
+  updateAuthButton();
+});
+
+// Initialize auth button on page load
+updateAuthButton();

@@ -36,9 +36,16 @@
           <li class="nav-item"><a class="nav-link" href="#">Menu</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Specials</a></li>
         </ul>
-        <button class="btn btn-light" data-bs-toggle="offcanvas" data-bs-target="#cartSidebar">
-          🛒 Cart <span class="badge bg-dark" id="cart-count">0</span>
-        </button>
+        <div class="d-flex align-items-center">
+  <!-- Cart Button -->
+  <button class="btn btn-light me-2" data-bs-toggle="offcanvas" data-bs-target="#cartSidebar">
+    🛒 Cart <span class="badge bg-dark" id="cart-count">0</span>
+  </button>
+
+  <!-- Login Button -->
+  <button id="auth-btn" class="btn btn-outline-light">Login</button>
+</div>
+
       </div>
     </div>
   </nav>
@@ -159,9 +166,12 @@
           <input type="text" class="form-control mb-2" placeholder="Expiration Date">
           <input type="text" class="form-control mb-2" placeholder="CVV">
         </div>
+        
         <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button class="btn btn-primary">Pay Now</button>
+            <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+             <button id="pay-now" class="btn btn-primary">Pay Now</button>
+        </div>
+  
         </div>
       </div>
     </div>
@@ -179,10 +189,10 @@
       </button>
     </div>
   </div>
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/cart.js"></script>
-
+<!-- Your Cart JS -->
+<script src="js/cart.js"></script>
 </body>
-</html
+</html>
